@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Finalizar Compra - Crochê</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-stone-50 p-8">
+    <div class="max-w-md mx-auto bg-white p-6 rounded-lg shadow-lg">
+        <a href="/" class="text-sm text-stone-400 hover:underline">← Voltar à loja</a>
+        <h2 class="text-2xl font-bold mt-3 mb-4">Dados de Entrega</h2>
+        <p class="mb-4 text-stone-600">Produto: <strong>{{ produto.nome }}</strong></p>
+        <p class="mb-4 text-green-700 font-bold">R$ {{ "%.2f"|format(produto.preco) }}</p>
+
+        <form action="/processar_pedido/{{ produto.id }}" method="post" class="space-y-4">
+            <input type="text" name="nome" placeholder="Seu Nome Completo" class="w-full p-2 border rounded" required>
+            <input type="email" name="email" placeholder="Seu E-mail" class="w-full p-2 border rounded" required>
+            <input type="text" name="telefone" placeholder="WhatsApp (Ex: 11999999999)" class="w-full p-2 border rounded" required>
+            <input type="text" name="cep" id="cep" placeholder="CEP (Apenas números)" maxlength="8" class="w-full p-2 border rounded" required>
+            <textarea name="endereco" placeholder="Endereço Completo (Rua, Número, Bairro, Cidade)" class="w-full p-2 border rounded" required></textarea>
+
+            <!-- CORRIGIDO: frete_info agora mostra valores reais baseados no CEP -->
+            <div id="frete_info" class="p-3 bg-green-50 text-green-800 rounded hidden">
+                Valor do Frete estimado: <span id="valor_frete">R$ 0,00</span>
+                <p class="text-xs text-stone-500 mt-1">*O valor pode variar conforme a região.</p>
+            </div>
+
+            <button type="submit" class="w-full bg-blue-600 text-white py-3 rounded font-bold hover:bg-blue-700">
+                Ir para Pagamento Seguro 🔒
+            </button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('cep').addEventListener('blur', function() {
+            var cep = this.value.replace(/\D/g, '');
+            if (cep.length >= 8) {
+                // CORRIGIDO: lógica de frete coerente com o backend (CEP iniciando com 0 = R$25, senão R$45)
+                var frete = cep.startsWith('0') ? 'R$ 25,00' : 'R$ 45,00';
+                document.getElementById('frete_info').classList.remove('hidden');
+                document.getElementById('valor_frete').innerText = frete;
+            }
+        });
+
+        // Formata CEP automaticamente
+        document.getElementById('cep').addEventListener('input', function() {
+            this.value = this.value.replace(/\D/g, '').slice(0, 8);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+/* Estilos customizados do Ateliê Roberta Severo */
+/* O projeto usa principalmente Tailwind CDN, este arquivo é para overrides */
+
+body {
+    font-family: 'Georgia', serif;
+}
+
+/* Animação suave nas transições de cards */
+.transition {
+    transition: all 0.2s ease-in-out;
+}

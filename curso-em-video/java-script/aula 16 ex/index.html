@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contador</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <main>
+        <section class="fundo">
+            <header>
+                <h1>Analisador de Números</h1>
+            </header>
+
+            <article class="artigo">
+                <p>Digite um número de 1 até 100:
+                    <input type="number" id="fnum" name="fnum">
+                    <input type="button" value="Adicionar" class="btn" onclick="adicionar()"><br>
+                    <select name="flista" id="flista" size="6"></select><br>
+                </p>
+                <input type="button" value="Finalizar" class="btnFin" onclick="finalizar()">
+            </article>
+
+            <article id="res">
+
+            </article>
+
+        </section>
+
+        <footer>
+            <p>Direitos reservados a Queiroz Enterprise &copy;</p>
+        </footer>
+    </main>
+
+    <script src="main.js"></script>
+</body>
+
+</html>

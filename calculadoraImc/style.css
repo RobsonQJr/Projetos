@@ -1,0 +1,36 @@
+.main{
+    max-width: 1600px;
+    
+   
+}
+
+.main_calculator{
+    background-color: black;
+    width: 450px;
+    height: 700px;
+    
+}
+
+.title_caculator{
+    margin: auto;
+    width: 225px;
+   
+}
+
+.title_caculator article h1 { 
+    
+    color: rgb(187, 56, 56);
+}
+
+.title_caculator > article > h1{
+    font-size: 4em;
+    font-weight: 900px;
+}
+
+.number_for_caculator{
+    font-size: 2em;
+    font-weight: 900;
+    color: white;
+    list-style-type: none;
+}
+

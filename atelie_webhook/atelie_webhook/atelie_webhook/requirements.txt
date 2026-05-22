@@ -1,0 +1,9 @@
+fastapi==0.111.0
+uvicorn[standard]==0.29.0
+sqlalchemy==2.0.30
+psycopg2-binary==2.9.9
+python-dotenv==1.0.1
+jinja2==3.1.4
+python-multipart==0.0.9
+mercadopago==2.2.2
+streamlit==1.35.0
